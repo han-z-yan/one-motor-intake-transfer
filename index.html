@@ -3,150 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>One-motor intake and transfer drive (3D)</title>
-<meta name="description" content="Interactive 3D model of a one-motor FTC intake and transfer drive that uses three one-way bearings.">
+<meta name="description" content="3D animation of an FTC intake and transfer driven by one motor through three one-way bearings, with a swing-down intake arm and four held balls.">
+<title>One-motor intake and transfer with a swing arm (3D)</title>
 <style>
   :root {
-    --bg: #faf9f5;
-    --text: #1f1e1d;
-    --text-2: #5e5d59;
-    --panel: #f0eee6;
-    --border: #c9c7bd;
-    --label-bg: #ffffff;
+    --page: #faf9f5;
+    --text-primary: #1f1e1d;
+    --text-secondary: #5e5d59;
+    --bg-neutral: #f0eee6;
+    --border-strong: #c9c7bd;
+    --surface-2: #ffffff;
+    --radius: 8px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #262624;
-      --text: #f0eee6;
-      --text-2: #b0aea5;
-      --panel: #30302e;
-      --border: #5e5d59;
-      --label-bg: #1f1e1d;
+      --page: #262624;
+      --text-primary: #f0eee6;
+      --text-secondary: #b0aea5;
+      --bg-neutral: #30302e;
+      --border-strong: #5e5d59;
+      --surface-2: #1f1e1d;
     }
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--text);
+    background: var(--page);
+    color: var(--text-primary);
     font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   main { max-width: 900px; margin: 0 auto; padding: 16px; }
-  h1 { font-size: 20px; font-weight: 600; margin: 0 0 12px; }
-  .intro { margin: 0 0 12px; font-size: 14px; color: var(--text-2); }
-  button {
-    min-height: 44px;
-    padding: 0 14px;
-    font: inherit;
-    font-size: 15px;
-    color: var(--text);
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  button[aria-pressed="true"] { background: var(--panel); font-weight: 600; }
-  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-  #stage {
-    position: relative;
-    width: 100%;
-    height: clamp(360px, 62vh, 640px);
-    margin-top: 8px;
-    overflow: hidden;
-    cursor: grab;
-    touch-action: pan-y;
-  }
-  #stage canvas { width: 100%; height: 100%; display: block; }
-  .tag {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 2px 6px;
-    font-size: 13px;
-    line-height: 1.3;
-    white-space: nowrap;
-    color: var(--text);
-    background: var(--label-bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    pointer-events: none;
-  }
-  .tag .dot {
-    display: inline-block;
-    width: 9px;
-    height: 9px;
-    margin-right: 5px;
-    border-radius: 50%;
-  }
-  .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin: 6px 0;
-    font-size: 13px;
-    color: var(--text-2);
-  }
-  .row span.btns { display: flex; gap: 6px; }
-  #speedLine { margin: 0 0 10px; font-size: 13px; color: var(--text-2); }
-  .card { background: var(--panel); border-radius: 8px; padding: 12px; }
-  .card .k { font-size: 13px; color: var(--text-2); }
-  .card .v { font-size: 16px; font-weight: 600; }
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 14px;
-    margin-top: 10px;
-    font-size: 12px;
-    color: var(--text-2);
-  }
-  .legend i {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
-    border-radius: 2px;
-  }
+  h1 { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
+  .intro { margin: 0 0 12px; font-size: 14px; color: var(--text-secondary); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.fit button{min-height:44px;padding:0 10px;font:inherit;font-size:14px;color:var(--text-primary);background:transparent;border:0.5px solid var(--border-strong);border-radius:var(--radius);cursor:pointer}
+.fit button[aria-pressed="true"]{background:var(--bg-neutral);font-weight:500}
+.fit .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#stage{position:relative;width:100%;height:440px;margin-top:8px;overflow:hidden;cursor:grab;touch-action:pan-y}
+#stage canvas{width:100%;height:100%;display:block}
+.tag{position:absolute;left:0;top:0;padding:1px 5px;font-size:12px;line-height:1.3;white-space:nowrap;color:var(--text-primary);background:var(--surface-2);border:0.5px solid var(--border-strong);border-radius:4px;pointer-events:none}
+.tag b{display:inline-block;width:8px;height:8px;margin-right:4px;border-radius:50%}
+.fit .row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0;font-size:13px;color:var(--text-secondary)}
+.fit .card{background:var(--bg-neutral);border-radius:var(--radius);padding:10px 12px}
+.fit .k{font-size:13px;color:var(--text-secondary)}
+.fit .v{font-size:15px;font-weight:500;color:var(--text-primary)}
+.fit .lg{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:10px;font-size:12px;color:var(--text-secondary)}
+.fit .lg i{display:inline-block;width:10px;height:10px;margin-right:5px;border-radius:2px}
+  #stage { height: clamp(440px, 64vh, 680px); }
 </style>
 </head>
 <body>
 <main>
-  <h1>One-motor intake and transfer drive</h1>
-  <p class="intro">One motor, three one-way bearings. Motor forward runs the intake and the transfer in the same direction. Motor reverse runs the intake only and leaves the transfer free to spin. Built for FTC.</p>
-
-  <div class="grid2">
-    <button id="btnForward" aria-pressed="true">Motor forward</button>
-    <button id="btnReverse" aria-pressed="false">Motor reverse</button>
-    <button id="btnViewAll" aria-pressed="false">Whole layout</button>
-    <button id="btnViewGearbox" aria-pressed="true">Gearbox close-up</button>
-  </div>
-
-  <div id="stage"><canvas id="canvas"></canvas></div>
-
-  <div class="row">
-    <span>Drag to rotate</span>
-    <span class="btns">
-      <button id="btnZoomOut" aria-label="Zoom out">−</button>
-      <button id="btnZoomIn" aria-label="Zoom in">+</button>
-      <button id="btnPause">Pause</button>
-    </span>
-  </div>
-  <p id="speedLine"></p>
-
-  <div class="grid2">
-    <div class="card"><div class="k">Intake roller</div><div class="v" id="intakeState"></div></div>
-    <div class="card"><div class="k">Transfer roller</div><div class="v" id="transferState"></div></div>
-  </div>
-
-  <div class="legend">
-    <span><i style="background:#D4537E"></i>One-way bearing</span>
-    <span><i style="background:#EF9F27;border-radius:50%"></i>8 mm round shaft</span>
-    <span><i style="background:#D85A30"></i>8 mm REX shaft</span>
-    <span><i style="background:#378ADD"></i>Fixed to motor shaft</span>
-    <span><i style="background:#1D9E75"></i>One-way part, locked</span>
-    <span><i style="background:#9a9890"></i>One-way part, slipping</span>
-    <span><i style="background:#C0DD97;border-radius:50%"></i>Ball</span>
-  </div>
+<h1>One-motor intake and transfer with a swing arm</h1>
+<p class="intro">One motor, three one-way bearings. Motor reverse runs only the intake, so balls collect and the transfer freewheels. Motor forward runs intake and transfer together and feeds the balls up.</p>
+<div class="fit">
+<h2 class="sr-only">3D animation of the intake with a swing-down arm roller, four held balls, and the one-motor drive, with buttons for motor direction and arm position.</h2>
+<div class="g2">
+<button id="btnReverse" aria-pressed="true">Reverse: collect</button>
+<button id="btnForward" aria-pressed="false">Forward: feed up</button>
+<button id="btnArmDown" aria-pressed="true">Arm down</button>
+<button id="btnArmUp" aria-pressed="false">Arm up</button>
+<button id="btnViewAll" aria-pressed="true">Whole robot</button>
+<button id="btnViewGearbox" aria-pressed="false">Gearbox close-up</button>
+</div>
+<div id="stage"><canvas id="canvas"></canvas></div>
+<div class="row"><span>Drag to rotate</span><span style="display:flex;gap:6px"><button id="btnZoomOut" aria-label="Zoom out">−</button><button id="btnZoomIn" aria-label="Zoom in">+</button><button id="btnPause">Pause</button></span></div>
+<div class="g2">
+<div class="card"><div class="k">Transfer rollers</div><div class="v" id="transferState"></div></div>
+<div class="card"><div class="k">Balls held</div><div class="v" id="heldState"></div></div>
+</div>
+<div class="lg">
+<span><i style="background:#D4537E"></i>One-way bearing</span>
+<span><i style="background:#1D9E75"></i>One-way part, locked</span>
+<span><i style="background:#D3D1C7"></i>One-way part, slipping</span>
+<span><i style="background:#EF9F27;border-radius:50%"></i>Round shaft</span>
+<span><i style="background:#D85A30"></i>REX shaft</span>
+<span><i style="background:#378ADD"></i>Fixed to motor shaft</span>
+<span><i style="background:#E24B4A"></i>Stop for the first ball (assumed)</span>
+</div>
+</div>
 </main>
 
 <!-- three.js r128 (needs an internet connection the first time) -->
@@ -154,129 +89,84 @@
 <script>
 (function () {
   'use strict';
-
   var stage = document.getElementById('stage');
   var canvas = document.getElementById('canvas');
-  if (!window.THREE) {
-    stage.textContent = 'three.js could not load. Check your internet connection.';
-    return;
-  }
+  if (!window.THREE) { stage.textContent = 'three.js could not load.'; return; }
   var T = THREE;
 
   // ---------------------------------------------------------------------
   // 1. Settings you are most likely to change
   // ---------------------------------------------------------------------
-  var MOTOR_RPM = 6000;
-  var STAGE1 = 2;      // motor -> round one-way shafts (gear pair, belt A, belt C)
-  var STAGE2 = 1.5;    // round one-way shafts -> rollers (the two long belts)
-  // Result: rollers turn at MOTOR_RPM / (STAGE1 * STAGE2) = 2000 rpm
-
-  // Which way the rollers turn. -1 makes the underside of each roller move
-  // toward the gearbox (balls travel in). Set to +1 to flip everything.
-  // On the real robot, flipping this means pressing all three one-way
-  // bearings in the other way round and reversing the motor in code.
-  var SPIN = -1;
-
-  var MOTOR_ANIM_SPEED = 5.4;   // how fast the motor is drawn, in rad/s (slow motion)
-
-  // Layout. X runs along the shafts, Y is up, Z is front-to-back.
-  // Shaft 1 must stay GEAR_CENTER units from the motor shaft.
-  var POS = {
-    motor:    { y: 0,   z: 100 },   // motor shaft (REX)
-    shaft1:   { y: 22,  z: 62 },    // round shaft carrying gear B and pulley A
-    shaft2:   { y: 48,  z: 106 },   // round shaft carrying pulley C
-    intake:   { y: 42,  z: -85 },   // intake roller shaft (REX)
-    transfer: { y: 105, z: 0 }      // transfer roller shaft (REX)
-  };
-  var GEAR_CENTER = 44;
-
-  // Stations along the shafts (X positions)
-  var X_GEAR = -30;      // gear pair: motor gear and gear B
-  var X_BELT_A = 0;      // belt from motor to pulley A
-  var X_BELT_C = 30;     // belt from motor to pulley C
-  var X_OUT = 60;        // output belts to the rollers
-  var X_PLATE_NEAR = -40, X_PLATE_FAR = 70;   // gearbox plates
-
-  // Sizes that follow from the ratios
-  var MOTOR_GEAR_TEETH = 16;
-  var GEAR_B_TEETH = MOTOR_GEAR_TEETH * STAGE1;
-  var MOTOR_GEAR_R = GEAR_CENTER / (1 + STAGE1);        // pitch radius
-  var GEAR_B_R = GEAR_CENTER - MOTOR_GEAR_R;
-  var MOTOR_PULLEY_R = 8;
-  var ONEWAY_PULLEY_R = MOTOR_PULLEY_R * STAGE1;        // pulleys A and C
-  var OUT_PULLEY_R = 10;
-  var ROLLER_PULLEY_R = OUT_PULLEY_R * STAGE2;
-  var WHEEL_R = 16;
-
-  var SHAFT_RPM = MOTOR_RPM / STAGE1;
-  var ROLLER_RPM = SHAFT_RPM / STAGE2;
-
-  // Camera targets: centre of the whole model and centre of the gearbox
-  var CENTER_ALL = { x: 31, y: 48, z: 0 };
-  var CENTER_GEARBOX = { x: 15, y: 19, z: 80 };
+  // Every position is (x, y) in millimetres in the side master sketch
+  // (Right plane): x runs toward the front of the robot, y is up.
+  // The numbers below were read off a screenshot, so treat them as
+  // good to about 1 mm and replace them with the real sketch values.
+  var CW = -1;        // rotation sign for "clockwise in the side view"
+  var ANIM = 7.5;     // how fast the motor is drawn, in rad/s (slow motion)
+  function P(sx, sy) { return { y: sy, z: -sx }; }
+  function rT(n) { return n / Math.PI; }
+  // Gearbox: motor shaft, shaft 1 (28.8 mm from the motor), transfer middle shaft
+  var M = P(0, -25.1), S1 = P(24.58, -10.1), X = P(-91.94, 50.48);
+  // Static intake rollers. RS is the one at the frame edge that the arm pivots on.
+  var R1 = P(76.8, 70.2), R2 = P(126.8, 55.9), RS = P(177.1, 42.6);
+  // Transfer rollers: lower geared, upper geared, upper belted, small 32 mm one
+  var TL = P(-65.2, 19.9), TU = P(-90.7, 91.1), TR = P(21, 91.1), TS = P(7.6, -17.9);
+  // Arm: pivot-to-roller length, and its angle (radians above horizontal)
+  // when down and when folded up inside the frame
+  var ARM_L = 61.15, ARM_DOWN = -0.2108, ARM_UP = 1.8326;
+  // Positions across the robot (along the shafts). XG, XA, XC are the three
+  // layers of the gearbox outside the side plate; W is the gap between the
+  // side plates and is a placeholder, not a measured value.
+  var XG = 7, XA = 20, XC = 33, W = 150, XFAR = -W - 9, XB = -W / 2, XARM = -16;
+  var VIEW_ALL = { c: { x: -60, y: 36, z: -73 }, w: 430, h: 250 };
+  var VIEW_GB = { c: { x: 16, y: 14, z: 35 }, w: 215, h: 165 };
 
   // ---------------------------------------------------------------------
-  // 2. Scene, camera, lights
+  // 2. Scene, camera, lights, materials
   // ---------------------------------------------------------------------
   var scene = new T.Scene();
-  var camera = new T.PerspectiveCamera(32, 1, 1, 4000);
+  var camera = new T.PerspectiveCamera(32, 1, 1, 6000);
   var renderer = new T.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-
   scene.add(new T.AmbientLight(0xffffff, 0.8));
   var sun = new T.DirectionalLight(0xffffff, 0.6);
   sun.position.set(120, 220, 300);
   scene.add(sun);
-
-  // root is what the user rotates; model is shifted so the target sits at the origin
-  var root = new T.Group();
-  var model = new T.Group();
+  var root = new T.Group(), model = new T.Group();
   root.add(model);
   scene.add(root);
-  root.rotation.set(0.22, 0.75, 0);
+  root.rotation.set(0.2, -Math.PI / 2 + 0.45, 0);
 
-  // ---------------------------------------------------------------------
-  // 3. Materials
-  // ---------------------------------------------------------------------
-  var LOCKED = 0x1D9E75, SLIPPING = 0x9a9890;
-  function mat(color) { return new T.MeshLambertMaterial({ color: color }); }
-
-  var matMotor = mat(0x378ADD);       // parts fixed to the motor shaft
-  var matRound = mat(0xEF9F27);       // 8 mm round shafts
-  var matRex = mat(0xD85A30);         // 8 mm REX shafts
-  var matFixed = mat(0x73726c);       // pulleys fixed to their own shaft
-  var matOneWay = mat(0xD4537E);      // the one-way bearings themselves
-  var matBelt = mat(0x444441);
-  var matBeltMark = mat(0x888780);
-  var matWheel = mat(0x7F77DD);
-  var matStripe = mat(0xf1efe8);
-  var matBall = mat(0xC0DD97);
-  var matMotorBody = mat(0x5f7fa6);
-  var matPlate = new T.MeshLambertMaterial({ color: 0x888780, transparent: true, opacity: 0.14, depthWrite: false });
-  // The three one-way parts change colour with motor direction
+  var LOCKED = 0x1D9E75, SLIPPING = 0xD3D1C7;
+  function mat(c) { return new T.MeshLambertMaterial({ color: c }); }
+  function ghost(c, o) { return new T.MeshLambertMaterial({ color: c, transparent: true, opacity: o, depthWrite: false }); }
+  var matMotor = mat(0x378ADD), matRound = mat(0xEF9F27), matRex = mat(0xD85A30);
+  var matFixed = mat(0x5F5E5A), matOneWay = mat(0xD4537E);
+  var matBelt = mat(0x55544f), matMark = mat(0xB4B2A9);
+  var matWheel = mat(0x7F77DD), matStripe = mat(0xf1efe8), matBall = mat(0xC0DD97);
+  var matBody = ghost(0x5f7fa6, 0.4), matArm = mat(0x9c9a92), matStop = mat(0xE24B4A);
+  var matPlate = ghost(0x888780, 0.12), matFloor = ghost(0x888780, 0.2);
   var matA = mat(LOCKED), matB = mat(SLIPPING), matC = mat(LOCKED);
 
   // ---------------------------------------------------------------------
-  // 4. Part builders. Every rotating part is built around the X axis.
+  // 3. Part builders. Every rotating part is built around the X axis.
   // ---------------------------------------------------------------------
-  function cyl(radius, length, material) {
-    var g = new T.CylinderGeometry(radius, radius, length, 28);
-    g.rotateZ(Math.PI / 2);                       // lay the cylinder along X
-    return new T.Mesh(g, material);
+  function cyl(r, len, m, seg) {
+    var g = new T.CylinderGeometry(r, r, len, seg || 28);
+    g.rotateZ(Math.PI / 2);
+    return new T.Mesh(g, m);
   }
-  function prism(radius, length, sides, material) {   // flat-sided bar: 6 = REX, 8 = bearing shell
-    var g = new T.CylinderGeometry(radius, radius, length, sides);
+  function prism(r, len, sides, m) {
+    var g = new T.CylinderGeometry(r, r, len, sides);
     g.rotateZ(Math.PI / 2);
     g = g.toNonIndexed();
-    g.computeVertexNormals();                     // flat faces
-    return new T.Mesh(g, material);
+    g.computeVertexNormals();
+    return new T.Mesh(g, m);
   }
-  function box(x, y, z, material) {
-    return new T.Mesh(new T.BoxGeometry(x, y, z), material);
-  }
-  function group(x, y, z) {
+  function box(x, y, z, m) { return new T.Mesh(new T.BoxGeometry(x, y, z), m); }
+  function group(x, p) {
     var g = new T.Group();
-    g.position.set(x, y, z);
+    g.position.set(x, p.y, p.z);
     model.add(g);
     return g;
   }
@@ -285,67 +175,60 @@
     parent.add(obj);
     return obj;
   }
-  function addGear(parent, x, material, teeth, pitchR) {
-    put(parent, cyl(pitchR - 2.3, 8, material), x);
+  function addGear(parent, x, m, teeth, r) {
+    put(parent, cyl(r - 1.6, 7, m), x);
     for (var k = 0; k < teeth; k++) {
       var a = k * 2 * Math.PI / teeth;
-      var tooth = put(parent, box(8, 4.6, 2.7, material), x, pitchR * Math.cos(a), pitchR * Math.sin(a));
-      tooth.rotation.x = a;
+      put(parent, box(7, 3.6, 2.3, m), x, r * Math.cos(a), r * Math.sin(a)).rotation.x = a;
     }
   }
-  function addPulley(parent, x, material, pitchR) {
-    put(parent, cyl(pitchR - 1.6, 8, material), x);
-    put(parent, cyl(pitchR + 2, 1.2, material), x - 4.2);     // flanges
-    put(parent, cyl(pitchR + 2, 1.2, material), x + 4.2);
-    for (var k = 0; k < 3; k++) {                             // white marks so you can see it spin
+  function addPulley(parent, x, m, r) {
+    put(parent, cyl(r - 1.2, 8, m), x);
+    put(parent, cyl(r + 2, 1.2, m), x - 4.2);
+    put(parent, cyl(r + 2, 1.2, m), x + 4.2);
+    for (var k = 0; k < 3; k++) {
       var a = k * 2 * Math.PI / 3;
-      for (var s = -1; s <= 1; s += 2) {
-        var m = put(parent, box(1, 3.5, 3.5, matStripe), x + s * 4.9, pitchR * 0.7 * Math.cos(a), pitchR * 0.7 * Math.sin(a));
-        m.rotation.x = a;
-      }
+      put(parent, box(1, 2.4, 2.4, matStripe), x + 4.9, (r - 0.5) * Math.cos(a), (r - 0.5) * Math.sin(a)).rotation.x = a;
     }
   }
-  // The one-way bearing: an octagonal shell that sits in a matching pocket
-  // in the printed gear or pulley, so it always turns with that part.
-  function addOneWayBearing(parent, x) {
-    put(parent, prism(7.5, 12.4, 8, matOneWay), x);
-  }
+  function addOneWay(parent, x) { put(parent, prism(7.4, 12, 8, matOneWay), x); }
   function addWheel(parent, x) {
-    put(parent, cyl(WHEEL_R, 14, matWheel), x);
+    put(parent, cyl(24, 20, matWheel), x);
     for (var k = 0; k < 8; k++) {
       var a = k * Math.PI / 4;
-      var tread = put(parent, box(14.4, 1.6, 4, matStripe), x, WHEEL_R * Math.cos(a), WHEEL_R * Math.sin(a));
-      tread.rotation.x = a;
+      put(parent, box(20.4, 1.6, 5, matStripe), x, 24 * Math.cos(a), 24 * Math.sin(a)).rotation.x = a;
     }
   }
+  function addRoller(p, x0, x1) {
+    var g = group(0, p);
+    put(g, prism(4.4, x1 - x0, 6, matRex), (x0 + x1) / 2);
+    addWheel(g, XB + 22);
+    addWheel(g, XB - 22);
+    return g;
+  }
 
-  // A belt between two pulleys at the same X. The pulleys can be different
-  // sizes. getAngle() returns the rotation of the first (driving) pulley so
-  // the marks on the belt move at the right speed.
+  // A belt between two pulleys in the same layer. getAngle() returns the
+  // rotation of the first pulley so the marks on the belt move with it.
   var belts = [];
   function addBelt(x, a, ra, b, rb, getAngle) {
     var dy = b.y - a.y, dz = b.z - a.z;
     var L = Math.sqrt(dy * dy + dz * dz);
-    var uy = dy / L, uz = dz / L;          // unit vector from pulley a to pulley b
-    var ny = uz, nz = -uy;                 // unit vector perpendicular to that
+    var uy = dy / L, uz = dz / L, ny = uz, nz = -uy;
     var sinB = (ra - rb) / L, cosB = Math.sqrt(1 - sinB * sinB);
-    var runLength = L * cosB;              // length of each straight run
-    var count = Math.max(3, Math.round(runLength / 22));
+    var runLength = L * cosB;
+    var count = Math.max(2, Math.round(runLength / 24));
     var belt = { x: x, runLength: runLength, ra: ra, getAngle: getAngle, marks: [] };
-
-    put(model, cyl(ra - 0.4, 6, matBelt), x, a.y, a.z);      // wrap around each pulley
-    put(model, cyl(rb - 0.4, 6, matBelt), x, b.y, b.z);
-    for (var s = -1; s <= 1; s += 2) {                       // the two straight runs
-      // direction from each pulley centre to its tangent point
+    put(model, cyl(ra + 0.3, 6, matBelt), x, a.y, a.z);
+    put(model, cyl(rb + 0.3, 6, matBelt), x, b.y, b.z);
+    for (var s = -1; s <= 1; s += 2) {
       var my = s * ny * cosB + uy * sinB, mz = s * nz * cosB + uz * sinB;
       var ay = a.y + ra * my, az = a.z + ra * mz;
       var by = b.y + rb * my, bz = b.z + rb * mz;
       var ry = (by - ay) / runLength, rz = (bz - az) / runLength;
       var tilt = -Math.atan2(ry, rz);
-      var run = put(model, box(6, 1.4, runLength, matBelt), x, (ay + by) / 2, (az + bz) / 2);
-      run.rotation.x = tilt;
+      put(model, box(6, 1.4, runLength, matBelt), x, (ay + by) / 2, (az + bz) / 2).rotation.x = tilt;
       for (var i = 0; i < count; i++) {
-        var mark = put(model, box(6.4, 2, 2.6, matBeltMark), x, 0, 0);
+        var mark = put(model, box(6.4, 2, 2.6, matMark), x, 0, 0);
         mark.rotation.x = tilt;
         belt.marks.push({ mesh: mark, side: s, offset: i / count, ay: ay, az: az, ry: ry, rz: rz });
       }
@@ -354,164 +237,217 @@
   }
 
   // ---------------------------------------------------------------------
-  // 5. Build the model
+  // 4. Build the robot
   // ---------------------------------------------------------------------
-  // Gearbox plates and motor body
-  put(model, box(2, 98, 100, matPlate), X_PLATE_NEAR, 19, 80);
-  put(model, box(2, 98, 100, matPlate), X_PLATE_FAR, 19, 80);
-  put(model, cyl(16, 18, matMotorBody), -53, POS.motor.y, POS.motor.z);
+  // Side plates, floor, the stop for the first ball, and the motor body
+  put(model, box(2, 190, 330, matPlate), 0, 36, -40);
+  put(model, box(2, 190, 330, matPlate), -W, 36, -40);
+  put(model, box(W + 120, 2, 520, matFloor), -W / 2 + 20, -58.9, -90);
+  var stopBar = put(model, box(W - 30, 3, 44, matStop), XB, 126, 36);
+  put(model, cyl(18.75, 60, matBody), -36, M.y, M.z);
 
-  // Motor shaft (REX): motor gear and two belt pulleys, all fixed to it
-  var gMotor = group(0, POS.motor.y, POS.motor.z);
-  put(gMotor, prism(4.4, 84, 6, matRex), -2);
-  addGear(gMotor, X_GEAR, matMotor, MOTOR_GEAR_TEETH, MOTOR_GEAR_R);
-  addPulley(gMotor, X_BELT_A, matMotor, MOTOR_PULLEY_R);
-  addPulley(gMotor, X_BELT_C, matMotor, MOTOR_PULLEY_R);
+  // Motor shaft (REX): gear and two pulleys, all fixed to it
+  var gMotor = group(0, M);
+  put(gMotor, prism(4.4, 46, 6, matRex), 18);
+  addGear(gMotor, XG, matMotor, 12, 9.6);
+  addPulley(gMotor, XA, matMotor, rT(20));
+  addPulley(gMotor, XC, matMotor, rT(20));
 
-  // Shaft 1 (round): carries gear B and pulley A, each on a one-way bearing,
-  // plus one output pulley that is fixed to the shaft
-  var gShaft1 = group(0, POS.shaft1.y, POS.shaft1.z);
-  put(gShaft1, cyl(3.6, 110, matRound), 15);
-  addPulley(gShaft1, X_OUT, matFixed, OUT_PULLEY_R);
-  var gGearB = group(X_GEAR, POS.shaft1.y, POS.shaft1.z);
-  addGear(gGearB, 0, matB, GEAR_B_TEETH, GEAR_B_R);
-  addOneWayBearing(gGearB, 0);
-  var gPulleyA = group(X_BELT_A, POS.shaft1.y, POS.shaft1.z);
-  addPulley(gPulleyA, 0, matA, ONEWAY_PULLEY_R);
-  addOneWayBearing(gPulleyA, 0);
+  // Shaft 1 (round): gear B and pulley A each ride on a one-way bearing;
+  // the output pulley is fixed to the shaft and belts to intake roller R1
+  var gS1 = group(0, S1);
+  put(gS1, cyl(4, 46, matRound), 18);
+  addPulley(gS1, XC, matFixed, rT(40));
+  var gGearB = group(XG, S1);
+  addGear(gGearB, 0, matB, 24, 19.2);
+  addOneWay(gGearB, 0);
+  var gPulleyA = group(XA, S1);
+  addPulley(gPulleyA, 0, matA, rT(41));
+  addOneWay(gPulleyA, 0);
 
-  // Shaft 2 (round): carries pulley C on a one-way bearing, plus one fixed output pulley
-  var gShaft2 = group(0, POS.shaft2.y, POS.shaft2.z);
-  put(gShaft2, cyl(3.6, 110, matRound), 15);
-  addPulley(gShaft2, X_OUT, matFixed, OUT_PULLEY_R);
-  var gPulleyC = group(X_BELT_C, POS.shaft2.y, POS.shaft2.z);
-  addPulley(gPulleyC, 0, matC, ONEWAY_PULLEY_R);
-  addOneWayBearing(gPulleyC, 0);
+  // Transfer middle shaft (round): gear and small pulley fixed to it,
+  // pulley C on a one-way bearing
+  var gX = group(0, X);
+  put(gX, cyl(4, W + 46, matRound), (41 - W - 5) / 2);
+  addGear(gX, XG, matFixed, 24, 20.3);
+  addPulley(gX, XA, matFixed, rT(30));
+  var gPulleyC = group(XC, X);
+  addPulley(gPulleyC, 0, matC, rT(60));
+  addOneWay(gPulleyC, 0);
 
-  // Roller shafts (REX) with a driven pulley and two wheels each
-  var gIntake = group(0, POS.intake.y, POS.intake.z);
-  put(gIntake, prism(4.4, 74, 6, matRex), 87);
-  addPulley(gIntake, X_OUT, matFixed, ROLLER_PULLEY_R);
-  addWheel(gIntake, 90);
-  addWheel(gIntake, 112);
+  var gR1 = addRoller(R1, -W - 5, XC + 6);
+  addPulley(gR1, XC, matFixed, rT(60));
+  addPulley(gR1, XA, matFixed, rT(24));
+  var gR2 = addRoller(R2, -W - 5, XA + 6);
+  addPulley(gR2, XA, matFixed, rT(24));
+  addPulley(gR2, XG, matFixed, rT(24));
+  var gRS = addRoller(RS, -W - 5, XG + 6);
+  addPulley(gRS, XG, matFixed, rT(24));
+  addPulley(gRS, XARM, matFixed, rT(24));
 
-  var gTransfer = group(0, POS.transfer.y, POS.transfer.z);
-  put(gTransfer, prism(4.4, 74, 6, matRex), 87);
-  addPulley(gTransfer, X_OUT, matFixed, ROLLER_PULLEY_R);
-  addWheel(gTransfer, 90);
-  addWheel(gTransfer, 112);
+  // Swing arm: pivots on the static roller's shaft and carries the arm roller
+  var gArm = group(0, RS);
+  put(gArm, box(4, 10, ARM_L + 16, matArm), -6, 0, -ARM_L / 2);
+  put(gArm, box(4, 10, ARM_L + 16, matArm), -W + 6, 0, -ARM_L / 2);
+  put(gArm, box(6, 1.4, ARM_L, matBelt), XARM, rT(24), -ARM_L / 2);
+  put(gArm, box(6, 1.4, ARM_L, matBelt), XARM, -rT(24), -ARM_L / 2);
+  var gRA = new T.Group();
+  gRA.position.set(0, 0, -ARM_L);
+  gArm.add(gRA);
+  put(gRA, prism(4.4, W - 8, 6, matRex), XB);
+  addWheel(gRA, XB + 22);
+  addWheel(gRA, XB - 22);
+  addPulley(gRA, XARM, matFixed, rT(24));
 
-  // A ball under each roller, to show which way game pieces get carried
-  var ballIntake = put(model, new T.Mesh(new T.SphereGeometry(13, 24, 16), matBall), 101, POS.intake.y - 29, POS.intake.z);
-  var ballTransfer = put(model, new T.Mesh(new T.SphereGeometry(13, 24, 16), matBall), 101, POS.transfer.y - 29, POS.transfer.z);
-  var travelIntake = 0, travelTransfer = 0;   // distance each ball has been carried
+  var gTL = addRoller(TL, XFAR - 6, XG + 6);
+  addGear(gTL, XG, matFixed, 24, 20.3);
+  addPulley(gTL, XFAR, matFixed, rT(24));
+  var gTU = addRoller(TU, -W - 5, XG + 6);
+  addGear(gTU, XG, matFixed, 24, 20.3);
+  var gTR = addRoller(TR, -W - 5, XA + 6);
+  addPulley(gTR, XA, matFixed, rT(30));
+  var gTS = group(0, TS);
+  put(gTS, prism(4.4, W + 16, 6, matRex), (XFAR - 6 + 1) / 2);
+  put(gTS, cyl(16, W - 20, matWheel), XB);
+  for (var q = 0; q < 6; q++) {
+    put(gTS, box(W - 19, 1.4, 4, matStripe), XB, 16 * Math.cos(q * Math.PI / 3), 16 * Math.sin(q * Math.PI / 3)).rotation.x = q * Math.PI / 3;
+  }
+  addPulley(gTS, XFAR, matFixed, rT(24));
 
-  // Rotation angles
-  var angMotor = 0;                       // motor shaft
-  var angShaft1 = 0, angShaft2 = 0;       // the two round shafts
-  var angIntake = 0, angTransfer = 0;     // the two roller shafts
+  var angMotor = 0, angS1 = 0, angIn = 0, angX = 0;
+  addBelt(XA, M, rT(20), S1, rT(41), function () { return angMotor; });
+  addBelt(XC, M, rT(20), X, rT(60), function () { return angMotor; });
+  addBelt(XC, S1, rT(40), R1, rT(60), function () { return angS1; });
+  addBelt(XA, R1, rT(24), R2, rT(24), function () { return angIn; });
+  addBelt(XG, R2, rT(24), RS, rT(24), function () { return angIn; });
+  addBelt(XA, X, rT(30), TR, rT(30), function () { return angX; });
+  addBelt(XFAR, TL, rT(24), TS, rT(24), function () { return -angX; });
 
-  addBelt(X_BELT_A, POS.motor, MOTOR_PULLEY_R, POS.shaft1, ONEWAY_PULLEY_R, function () { return angMotor; });
-  addBelt(X_BELT_C, POS.motor, MOTOR_PULLEY_R, POS.shaft2, ONEWAY_PULLEY_R, function () { return angMotor; });
-  addBelt(X_OUT, POS.shaft1, OUT_PULLEY_R, POS.intake, ROLLER_PULLEY_R, function () { return angShaft1; });
-  addBelt(X_OUT, POS.shaft2, OUT_PULLEY_R, POS.transfer, ROLLER_PULLEY_R, function () { return angShaft2; });
-
-  // Phase offsets so the motor gear teeth sit in the gaps of gear B
-  var stepMotorGear = 2 * Math.PI / MOTOR_GEAR_TEETH;
-  var stepGearB = 2 * Math.PI / GEAR_B_TEETH;
-  var meshAngle = Math.atan2(POS.shaft1.z - POS.motor.z, POS.shaft1.y - POS.motor.y);
+  // Phase offsets so gear teeth sit in the gaps of the gear they mesh with
   function mod(v, step) { return ((v % step) + step) % step; }
-  var phaseMotorGear = mod(meshAngle, stepMotorGear);
-  var phaseGearB = mod(meshAngle + Math.PI - stepGearB / 2, stepGearB);
+  function meshAngle(a, b) { return Math.atan2(b.z - a.z, b.y - a.y); }
+  var stepM = 2 * Math.PI / 12, stepB = 2 * Math.PI / 24, stepT = 2 * Math.PI / 24;
+  var aMB = meshAngle(M, S1);
+  var phaseMotor = mod(aMB, stepM);
+  var phaseB = mod(aMB + Math.PI - stepB / 2, stepB);
+  function phaseFor(n) {
+    var a = meshAngle(X, n);
+    return mod(a + Math.PI + mod(a, stepT) + stepT / 2, stepT);
+  }
+  var phaseTL = phaseFor(TL), phaseTU = phaseFor(TU);
 
   // ---------------------------------------------------------------------
-  // 6. Labels (HTML tags that follow 3D points)
+  // 5. Ball path: floor, ramp, bend, straight up. s is distance along it.
+  //    S_WAIT  = where a ball stops against the frame when the arm is up
+  //    S_DRIVE = how far the intake rollers can push a ball on their own
+  //    S_TOP   = where the first ball is stopped while collecting
   // ---------------------------------------------------------------------
-  var ROUND = '#EF9F27', REX = '#D85A30', ONEWAY = '#D4537E';
+  var L0 = 96, L1 = 198.6, L2 = 86.7, L3 = 70, TOTAL = L0 + L1 + L2 + L3;
+  var S_WAIT = L0 - 22, S_DRIVE = L0 + 171.1, S_TOP = L0 + L1 + 77.9, DMIN = 71.6;
+  function pathAt(s) {
+    if (s < L0) return [300.05 - s, -22.3];
+    s -= L0;
+    if (s < L1) return [204.05 - 0.963 * s, -22.3 + 0.2699 * s];
+    s -= L1;
+    if (s < L2) { var a = -1.8438 - s / 66.8; return [30.8 + 66.8 * Math.cos(a), 95.6 + 66.8 * Math.sin(a)]; }
+    return [-36, 95.6 + (s - L2)];
+  }
+  function gap(p, q) {
+    var a = pathAt(p.s), b = pathAt(q.s);
+    return Math.sqrt((a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1]));
+  }
+  var balls = [70, -70, -210, -350].map(function (s) {
+    return { s: s, old: s, mesh: put(model, new T.Mesh(new T.SphereGeometry(35.56, 28, 18), matBall), XB, 0, 0) };
+  });
+  var armAngle = ARM_DOWN, armTarget = ARM_DOWN;
+
   var labelDefs = [
-    // text, dot colour, x, y, z, gearbox-only?
-    ['Motor: REX', REX, -58, -25, 108, false],
-    ['Shaft 1: round', ROUND, -44, -16, 26, false],
-    ['Shaft 2: round', ROUND, -46, 44, 136, false],
-    ['Intake: REX', REX, 101, 74, -85, false],
-    ['Transfer: REX', REX, 101, 137, 0, false],
-    ['One-way B', ONEWAY, -38, 64, 40, true],
-    ['One-way A', ONEWAY, 0, 52, 76, true],
-    ['One-way C', ONEWAY, 30, 78, 108, true]
+    ['Arm roller (1st)', '#D85A30', XB, 64, -237, 0],
+    ['Static roller (2nd)', '#D85A30', XB, 108, -186, 0],
+    ['Transfer', '#D85A30', XB, 128, 70, 0],
+    ['Stop (assumed)', '#E24B4A', XB, 152, 36, 0],
+    ['One-way gearbox', '#D4537E', 44, -48, -12, 0],
+    ['One-way C', '#D4537E', XC, 80, 92, 1],
+    ['Middle shaft: round', '#EF9F27', 44, 24, 108, 1],
+    ['One-way A', '#D4537E', XA, 14, -42, 1],
+    ['One-way B', '#D4537E', XG, -38, -32, 1],
+    ['Shaft 1: round', '#EF9F27', 44, -14, -40, 1],
+    ['Motor: REX', '#D85A30', 44, -44, 4, 1],
+    ['Motor hits small roller', '#E24B4A', -36, -92, 20, 1]
   ];
   var labels = labelDefs.map(function (d) {
     var el = document.createElement('div');
     el.className = 'tag';
-    var dot = document.createElement('span');
-    dot.className = 'dot';
+    var dot = document.createElement('b');
     dot.style.background = d[1];
     el.appendChild(dot);
     el.appendChild(document.createTextNode(d[0]));
     stage.appendChild(el);
-    return { el: el, point: new T.Vector3(d[2], d[3], d[4]), gearboxOnly: d[5] };
+    return { el: el, point: new T.Vector3(d[2], d[3], d[4]), gb: d[5] };
   });
 
-  // ---------------------------------------------------------------------
-  // 7. Camera fit, zoom and view presets
-  // ---------------------------------------------------------------------
-  var zoom = 1;
+  var armLabel = labels[0];
+  var zoom = 1, view = VIEW_ALL;
   function fit() {
     var w = stage.clientWidth || 380, h = stage.clientHeight || 440;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    // far enough back to fit the model's width (340) and height (230)
-    var dist = Math.max(400, 340 / (0.5735 * camera.aspect));
+    var dist = Math.max(view.h / 0.5735, view.w / (0.5735 * camera.aspect));
     camera.position.set(0, 0, dist / zoom);
     camera.updateProjectionMatrix();
   }
-
   var btnViewAll = document.getElementById('btnViewAll');
   var btnViewGearbox = document.getElementById('btnViewGearbox');
-  function setView(gearbox) {
-    var c = gearbox ? CENTER_GEARBOX : CENTER_ALL;
-    model.position.set(-c.x, -c.y, -c.z);
-    zoom = gearbox ? 1.85 : 1;
-    labels.forEach(function (l) {
-      l.el.style.display = (l.gearboxOnly && !gearbox) ? 'none' : 'block';
-    });
-    btnViewAll.setAttribute('aria-pressed', gearbox ? 'false' : 'true');
-    btnViewGearbox.setAttribute('aria-pressed', gearbox ? 'true' : 'false');
+  function setView(gb) {
+    view = gb ? VIEW_GB : VIEW_ALL;
+    model.position.set(-view.c.x, -view.c.y, -view.c.z);
+    zoom = 1;
+    labels.forEach(function (l) { l.el.style.display = (l.gb === (gb ? 1 : 0)) ? 'block' : 'none'; });
+    btnViewAll.setAttribute('aria-pressed', gb ? 'false' : 'true');
+    btnViewGearbox.setAttribute('aria-pressed', gb ? 'true' : 'false');
     fit();
   }
   btnViewAll.onclick = function () { setView(false); };
   btnViewGearbox.onclick = function () { setView(true); };
-  document.getElementById('btnZoomIn').onclick = function () { zoom = Math.min(4, zoom * 1.25); fit(); };
-  document.getElementById('btnZoomOut').onclick = function () { zoom = Math.max(0.6, zoom / 1.25); fit(); };
+  document.getElementById('btnZoomIn').onclick = function () { zoom = Math.min(5, zoom * 1.25); fit(); };
+  document.getElementById('btnZoomOut').onclick = function () { zoom = Math.max(0.5, zoom / 1.25); fit(); };
   window.addEventListener('resize', fit);
-  setView(true);
+  setView(false);
 
   // ---------------------------------------------------------------------
-  // 8. Motor direction. This is the whole mechanism:
-  //    forward: pulley A and pulley C lock, gear B slips (spins backward on shaft 1)
-  //    reverse: gear B locks, pulley A and pulley C slip
+  // 6. Motor direction and arm. This is the whole mechanism:
+  //    forward: pulley A and pulley C lock, gear B slips -> intake + transfer
+  //    reverse: gear B locks, pulley A and pulley C slip -> intake only
   // ---------------------------------------------------------------------
-  var direction = 1;       // +1 forward, -1 reverse
+  var direction = -1;
   var btnForward = document.getElementById('btnForward');
   var btnReverse = document.getElementById('btnReverse');
+  var btnArmDown = document.getElementById('btnArmDown');
+  var btnArmUp = document.getElementById('btnArmUp');
   var transferState = document.getElementById('transferState');
-  function rpm(v) { return Math.round(v) + ' rpm'; }
-
-  document.getElementById('speedLine').textContent =
-    rpm(MOTOR_RPM) + ' motor → ' + rpm(SHAFT_RPM) + ' round shafts → ' + rpm(ROLLER_RPM) + ' rollers';
-  document.getElementById('intakeState').textContent = rpm(ROLLER_RPM) + ', pulling in';
-
+  var heldState = document.getElementById('heldState');
+  var heldShown = -1;
   function setDirection(forward) {
     direction = forward ? 1 : -1;
     matA.color.setHex(forward ? LOCKED : SLIPPING);
     matB.color.setHex(forward ? SLIPPING : LOCKED);
     matC.color.setHex(forward ? LOCKED : SLIPPING);
-    transferState.textContent = forward ? rpm(ROLLER_RPM) + ', running' : '0 rpm, free spinning';
+    stopBar.visible = !forward;
+    transferState.textContent = forward ? '2000 rpm, driven' : 'Free, pushed by balls';
     btnForward.setAttribute('aria-pressed', forward ? 'true' : 'false');
     btnReverse.setAttribute('aria-pressed', forward ? 'false' : 'true');
   }
+  function setArm(down) {
+    armTarget = down ? ARM_DOWN : ARM_UP;
+    btnArmDown.setAttribute('aria-pressed', down ? 'true' : 'false');
+    btnArmUp.setAttribute('aria-pressed', down ? 'false' : 'true');
+  }
   btnForward.onclick = function () { setDirection(true); };
   btnReverse.onclick = function () { setDirection(false); };
-  setDirection(true);
+  btnArmDown.onclick = function () { setArm(true); };
+  btnArmUp.onclick = function () { setArm(false); };
+  setDirection(false);
+  setArm(true);
 
   var playing = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   var btnPause = document.getElementById('btnPause');
@@ -521,68 +457,85 @@
     btnPause.textContent = playing ? 'Pause' : 'Play';
   };
 
-  // ---------------------------------------------------------------------
-  // 9. Animation loop
-  // ---------------------------------------------------------------------
   var lastTime = 0, tmp = new T.Vector3();
   function frac(v) { return ((v % 1) + 1) % 1; }
-
   function frame(time) {
     var dt = Math.min(0.05, (time - lastTime) / 1000 || 0);
     lastTime = time;
-
     if (playing) {
-      var wMotor = MOTOR_ANIM_SPEED;
-      var wShaft = wMotor / STAGE1;              // round shafts turn STAGE1 times slower
-      var wRoller = wShaft / STAGE2;             // rollers turn STAGE2 times slower again
-
-      angMotor += direction * SPIN * wMotor * dt;    // motor turns either way
-      angShaft1 += SPIN * wShaft * dt;               // shaft 1 always turns the pull-in way
-      angIntake += SPIN * wRoller * dt;
-      travelIntake += wRoller * WHEEL_R * dt;
-      if (direction > 0) {                           // shaft 2 only runs in forward
-        angShaft2 += SPIN * wShaft * dt;
-        angTransfer += SPIN * wRoller * dt;
-        travelTransfer += wRoller * WHEEL_R * dt;
+      var wS1 = direction > 0 ? ANIM * 20 / 41 : ANIM / 2;
+      var wIn = wS1 * 40 / 60;
+      angMotor += direction * CW * ANIM * dt;
+      angS1 += CW * wS1 * dt;
+      angIn += CW * wIn * dt;
+      armAngle += Math.max(-1.8 * dt, Math.min(1.8 * dt, armTarget - armAngle));
+      var armDown = armAngle < ARM_DOWN + 0.08;
+      var v = wIn * 24 * dt, n = balls.length, i, k, moved = 0;
+      // Balls: each one moves if a driven roller can reach it, balls behind
+      // push the ones ahead, and nothing passes the stop while collecting.
+      balls.sort(function (a, b) { return b.s - a.s; });
+      for (i = 0; i < n; i++) {
+        var s0 = balls[i].s, go;
+        balls[i].old = s0;
+        if (s0 < L0) go = armDown || s0 < S_WAIT;
+        else go = direction > 0 || s0 < S_DRIVE || s0 > S_TOP + 1;
+        if (go) balls[i].s = s0 + v;
       }
+      for (i = n - 1; i > 0; i--) {
+        if (balls[i - 1].s < L0) continue;
+        k = 0;
+        while (gap(balls[i], balls[i - 1]) < DMIN && k++ < 300) balls[i - 1].s += 0.5;
+      }
+      for (i = 0; i < n; i++) {
+        if (direction < 0 && balls[i].old <= S_TOP + 0.01) balls[i].s = Math.min(balls[i].s, S_TOP);
+        if (i > 0) {
+          k = 0;
+          while (gap(balls[i - 1], balls[i]) < DMIN && k++ < 300) balls[i].s -= 0.5;
+        }
+        if (balls[i].s > S_DRIVE) moved = Math.max(moved, balls[i].s - balls[i].old);
+      }
+      angX += direction > 0 ? CW * (ANIM / 3) * dt : CW * moved / 24;
+      if (balls[0].s > TOTAL) balls[0].s = Math.min(-60, balls[n - 1].s - 150);
+      var held = 0;
+      for (i = 0; i < n; i++) if (balls[i].s > L0 + 15 && balls[i].s <= S_TOP + 2) held++;
+      if (held !== heldShown) { heldShown = held; heldState.textContent = held + ' of 4'; }
     }
-
-    gMotor.rotation.x = angMotor + phaseMotorGear;
-    gPulleyA.rotation.x = angMotor / STAGE1;             // belt: same direction as the motor
-    gPulleyC.rotation.x = angMotor / STAGE1;             // belt: same direction as the motor
-    gGearB.rotation.x = phaseGearB - angMotor / STAGE1;  // gear mesh: opposite direction
-    gShaft1.rotation.x = angShaft1;
-    gShaft2.rotation.x = angShaft2;
-    gIntake.rotation.x = angIntake;
-    gTransfer.rotation.x = angTransfer;
-
-    ballIntake.position.z = POS.intake.z - SPIN * ((travelIntake % 90) - 45);
-    ballTransfer.position.z = POS.transfer.z - SPIN * ((travelTransfer % 90) - 45);
-
+    gArm.rotation.x = armAngle;
+    gRA.rotation.x = angIn - armAngle;
+    armLabel.point.set(XB, RS.y + ARM_L * Math.sin(armAngle) + 36, RS.z - ARM_L * Math.cos(armAngle));
+    gMotor.rotation.x = angMotor + phaseMotor;
+    gPulleyA.rotation.x = angMotor * 20 / 41;
+    gGearB.rotation.x = phaseB - angMotor / 2;
+    gS1.rotation.x = angS1;
+    gPulleyC.rotation.x = angMotor / 3;
+    gX.rotation.x = angX;
+    gTL.rotation.x = phaseTL - angX;
+    gTU.rotation.x = phaseTU - angX;
+    gTR.rotation.x = angX;
+    gTS.rotation.x = -angX;
+    gR1.rotation.x = gR2.rotation.x = gRS.rotation.x = angIn;
+    balls.forEach(function (b) {
+      var p = pathAt(b.s);
+      b.mesh.position.set(XB, p[1], -p[0]);
+    });
     belts.forEach(function (b) {
       var a = b.getAngle();
       b.marks.forEach(function (m) {
-        var q = frac(m.offset + m.side * a * b.ra / b.runLength) * b.runLength;
-        m.mesh.position.set(b.x, m.ay + m.ry * q, m.az + m.rz * q);
+        var d = frac(m.offset + m.side * a * b.ra / b.runLength) * b.runLength;
+        m.mesh.position.set(b.x, m.ay + m.ry * d, m.az + m.rz * d);
       });
     });
-
     renderer.render(scene, camera);
-
     var w = stage.clientWidth, h = stage.clientHeight;
     labels.forEach(function (l) {
       tmp.copy(l.point).applyMatrix4(model.matrixWorld).project(camera);
       var x = (tmp.x * 0.5 + 0.5) * w, y = (-tmp.y * 0.5 + 0.5) * h;
       l.el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,-50%)';
     });
-
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
 
-  // ---------------------------------------------------------------------
-  // 10. Drag to rotate (sideways on touch, both ways with a mouse)
-  // ---------------------------------------------------------------------
   var dragging = false, lastX = 0, lastY = 0;
   stage.addEventListener('pointerdown', function (e) {
     dragging = true;
@@ -593,9 +546,7 @@
   window.addEventListener('pointermove', function (e) {
     if (!dragging) return;
     root.rotation.y += (e.clientX - lastX) * 0.01;
-    if (e.pointerType === 'mouse') {
-      root.rotation.x = Math.max(-0.3, Math.min(1.3, root.rotation.x + (e.clientY - lastY) * 0.01));
-    }
+    if (e.pointerType === 'mouse') root.rotation.x = Math.max(-0.3, Math.min(1.3, root.rotation.x + (e.clientY - lastY) * 0.01));
     lastX = e.clientX;
     lastY = e.clientY;
   });
